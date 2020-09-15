@@ -1,6 +1,7 @@
 const addBtn = document.querySelector('#new-toy-btn')
 const toyForm = document.querySelector('.container')
 let addToy = false
+<<<<<<< HEAD
 const toyCollection = document.querySelector("#toy-collection")
 
 document.addEventListener("DOMContentLoaded", () =>{
@@ -21,6 +22,38 @@ document.addEventListener("DOMContentLoaded", () =>{
       document.querySelector("#toy-collection").innerHTML = toysHTML.join("")
       //use =+ toysHTML if the div had something in it already
     })
+=======
+
+
+// challenge 1: fetch all the toys
+function getToys() {
+  return fetch('http://localhost:3000/toys')
+    .then(res => res.json())
+
+}
+
+getToys().then(toys => {
+  toys.forEach(toy => {
+    renderToys(toy)
+  });
+});
+
+function renderToys(toy) {
+  let h2 = document.createElement('h2')
+  h2.innerText = toy.name
+
+  let img = document.createElement('img')
+  img.setAttribute('src', toy.image)
+  //add src attribute to the toy's image
+  img.setAttribute('class', 'toy-avatar')
+  //add class attribute called toy-avatar to the image
+
+  //The setAttribute() method adds the specified attribute to an element,
+  //and gives it the specified value.
+
+  let p = document.createElement('p')
+  p.innerText = `${toy.likes} likes`
+>>>>>>> 691e52de000acda8da9be0313436146c234e8dcc
 
 toyForm.addEventListener("submit", function(e) {
   e.preventDefault();
